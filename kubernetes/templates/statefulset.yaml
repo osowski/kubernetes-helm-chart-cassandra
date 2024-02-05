@@ -13,6 +13,9 @@ spec:
   updateStrategy:
     type: "RollingUpdate"
   replicas: {{ .Values.cassandraReplicaCount }}
+  selector:
+    matchLabels:
+      app: {{ template "kubernetes.name" . }}
   template:
     metadata:
       labels:
