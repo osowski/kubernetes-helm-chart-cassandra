@@ -21,10 +21,10 @@ spec:
       labels:
         app: {{ template "kubernetes.name" . }}
     spec:
-      nodeSelector:
-        {{- range $key, $val := .Values.cassandraNodeSelector }}
-        {{ $key }}: {{ $val | quote }}
-        {{- end}}
+      #nodeSelector:
+      #  {{- range $key, $val := .Values.cassandraNodeSelector }}
+      #  {{ $key }}: {{ $val | quote }}
+      #  {{- end}}
       affinity:
         podAntiAffinity:
           requiredDuringSchedulingIgnoredDuringExecution:
