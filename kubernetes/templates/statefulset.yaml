@@ -180,8 +180,9 @@ spec:
         {{- end }}
       volumes:
         - name: cassandra-data
-          hostPath:
-            path: {{ .Values.cassandraMountPathPrefix }}/{{ .Release.Namespace }}/cassandra
+          emptyDir: {}
+          #hostPath:
+          #  path: {{ .Values.cassandraMountPathPrefix }}/{{ .Release.Namespace }}/cassandra
         - name: {{ template "kubernetes.name" . }}
           configMap:
             name: {{ template "kubernetes.name" . }}
