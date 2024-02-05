@@ -1,4 +1,4 @@
-apiVersion: apps/v1beta1
+apiVersion: apps
 kind: StatefulSet
 metadata:
   name: {{ template "kubernetes.name" . }}
