@@ -3,9 +3,12 @@ cassandraNodeSelector:
   node-role.kubernetes.io/node: "true"
 
 # Number of nodes
-cassandraReplicaCount: 3
+cassandraReplicaCount: 1
 # Number of maximum dead nodes
 cassandraMaxUnavailableNodes: 1
+
+cassandra:
+  enableCassandra: false
 
 # Cassandra settings
 cassandraImageName: "quay.io/mysocialapp/cassandra"

@@ -35,6 +35,7 @@ spec:
       subdomain: {{ template "kubernetes.name" . }}
       terminationGracePeriodSeconds: 1800
       containers:
+        {{- if .Values.cassandra.enableCassandra }}
         - name: cassandra
           image: {{ .Values.cassandraImageName | default "quay.io/mysocialapp/cassandra" }}:{{ .Values.cassandraImageVersion }}
           command: ['/bin/sh', '-c', '/usr/local/apache-cassandra/scripts/run_override.sh']
@@ -131,6 +132,7 @@ spec:
               mountPath: /var/lib/cassandra
             - name: {{ template "kubernetes.name" . }}
               mountPath: /usr/local/apache-cassandra/scripts
+        {{- end }}
         {{- if .Values.cassandraExporter.enableExporter }}
         - name: cassandra-exporter
           image: "criteord/cassandra_exporter:{{ .Values.cassandraExporter.imageVersion }}"
